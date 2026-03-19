@@ -1,15 +1,14 @@
+# SPDX-FileCopyrightText: 2022 Nextcloud GmbH and Nextcloud contributors
+# SPDX-License-Identifier: GPL-2.0-or-later
 name: Windows Build and Test
 on:
   workflow_dispatch:
   pull_request:
     branches:
       - master
-# SPDX-FileCopyrightText: 2022 Nextcloud GmbH and Nextcloud contributors
-# SPDX-License-Identifier: GPL-2.0-or-later
-name: Windows Build and Test
-on:
-  pull_request:
-    types: [opened, synchronize, reopened]
+  push:
+    branches:
+      - master
 jobs:
   build:
     name: Windows Build and Test
