@@ -97,3 +97,20 @@ jobs:
           }
           
           runTests
+      - name: Packaging
+        shell: pwsh
+        run: |
+          function craft() {
+              python "${{ env.CRAFT_MASTER_LOCATION }}\CraftMaster.py" --config "${{ env.CRAFT_MASTER_CONFIG }}" --target ${{ env.CRAFT_TARGET }} -c $args
+              if($LASTEXITCODE -ne 0) {exit $LASTEXITCODE}
+          }
+          # Cria o instalador .msi ou .exe
+          craft --package nextcloud-client
+
+      - name: Upload Installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: Nextcloud-Windows-Installer
+          path: |
+            **/*.msi
+            **/*.exe
