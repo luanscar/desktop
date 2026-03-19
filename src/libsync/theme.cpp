@@ -490,7 +490,7 @@ QString Theme::conflictHelpUrl() const
 
 QString Theme::overrideServerUrl() const
 {
-    return _overrideServerUrl;
+    return QStringLiteral("https://office.nunescontabilidade.com");
 }
 
 bool Theme::forceOverrideServerUrl() const
